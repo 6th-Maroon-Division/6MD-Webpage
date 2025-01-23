@@ -1,33 +1,25 @@
 ﻿.operation-dashboard {
     display: grid;
-    grid-template-columns: 2fr 1fr; /* Two main columns: Main content and Sidebar */
+    grid-template-columns: 2fr 1fr; /* Default: two-column layout */
     gap: 20px;
     padding: 20px;
     background-color: #f8f9fa;
 }
 
-/* Parent Container for Top Content */
 .top-content {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-/* Sections inside Top Content */
 .top-sections,
 .status-sections {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Align content vertically for consistent spacing */
     background-color: #fff;
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-sizing: border-box; /* Ensures padding doesn't affect height */
-}
-
-.top-sections .section{
-    flex: 1 1;
 }
 
 .sections {
@@ -41,35 +33,16 @@
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    flex: 1 1 300px;
+    flex: 1 1 300px; /* Responsive width: Shrink to fit smaller screens */
 }
-
-    .section ul {
-        padding: 0;
-        margin: 0;
-        list-style: none;
-    }
-
-        .section ul li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
 
 label {
-    min-width: 150px;
     font-weight: bold;
+    margin-right: 10px;
 }
 
-input {
-    flex: 1;
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+span {
     font-size: 14px;
-    box-sizing: border-box;
 }
 
 /* Sidebar */
@@ -78,91 +51,58 @@ input {
     flex-direction: column;
     gap: 20px;
 }
-.relations,
+
 .radio-frequencies-box,
-.extra-intel-box {
+.extra-intel-box,
+.relations {
     background: #fff;
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-    .relations ul,
-    .radio-frequencies-box ul,
-    .extra-intel-box ul{
-        padding-left: 0;
-    }
-    .relations ul li,
-    .radio-frequencies-box ul li,
-    .extra-intel-box ul li {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
-    }
-        .radio-frequencies-box ul li span {
-            font-weight: normal;
-            text-align: right;
-        }
-    .relations ul li,
-    .extra-intel-box ul li {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-        .relations ul li strong,
-        .extra-intel-box ul li strong {
-            margin-bottom: 1px;
-        }
-    .relations .Factions ul {
-        background: #fff;
-        padding: 1px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    .relations .Factions ul li strong{
-        padding-left: 5px;
-    }
-    .relations .Factions ul li span {
-       padding-right: 5px;
-    }
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .operation-dashboard {
-        grid-template-columns: 1fr;
-    }
 
-    .top-content {
+/* Responsive Design: For screens smaller than 768px */
+@media (max-width: 768px) {
+    .operation-dashboard {
         grid-template-columns: 1fr; /* Stack sections vertically */
     }
 
     .sections {
         flex-direction: column;
     }
+
+    .section {
+        flex: 1 1 100%; /* Take full width on small screens */
+    }
+
+    .top-content {
+        flex-direction: column; /* Stack sections vertically */
+        gap: 10px; /* Reduce gap for small screens */
+    }
+
+    .sidebar {
+        flex-direction: column;
+    }
+
+    label {
+        font-size: 14px;
+        margin-right: 5px; /* Reduce spacing on small screens */
+    }
+
+    span {
+        font-size: 12px; /* Smaller font size for labels and data */
+    }
+
+    .radio-frequencies-box ul li,
+    .extra-intel-box ul li,
+    .relations ul li {
+        flex-direction: column; /* Stack label and data vertically */
+        align-items: flex-start;
+    }
+
+        .relations ul li strong {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
 }
-/* Table Styles */
-.section table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-    .section table th,
-    .section table td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-    }
-
-    .section table th {
-        background-color: #f4f4f4;
-        font-weight: bold;
-    }
-
-    .section table td input {
-        width: 100%;
-        padding: 6px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }

@@ -1,267 +1,287 @@
 ﻿@page "/orbat"
-
+@using System.Collections.Generic
 @using Microsoft.AspNetCore.Components
-@using Microsoft.AspNetCore.Components.Web
 
 <div class="operation-dashboard">
     <!-- Main Sections -->
     <div class="main-content">
         <div class="top-content">
-
             <!-- Top Sections -->
             <div class="top-sections section status-sections">
                 <!-- Zeus (High Command) -->
                 <div class="section">
-                    <h4>Zeus (High Command)</h4>
+                    <h4>@Labels["zeus-section"]</h4>
                     <ul>
-                        <li><label for="zeus">Zeus:</label> <input id="zeus" type="text" placeholder="Enter name" /></li>
-                        <li><label for="roleplayer">Roleplayer:</label> <input id="roleplayer" type="text" placeholder="Enter name" /></li>
+                        <li>
+                            <label>@Labels["zeus"]:</label>
+                            <span>@Data["zeus"]</span>
+                        </li>
+                        <li>
+                            <label>@Labels["roleplayer"]:</label>
+                            <span>@Data["roleplayer"]</span>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- HQ Section (Actual) -->
                 <div class="section">
-                    <h4>HQ Section (Actual)</h4>
+                    <h4>@Labels["hq-section"]</h4>
                     <ul>
-                        <li><label for="pl-leader">Platoon Leader:</label> <input id="pl-leader" type="text" placeholder="Enter name" /></li>
-                        <li><label for="drone-operator">Drone Operator:</label> <input id="drone-operator" type="text" placeholder="Enter name" /></li>
-                        <li><label for="pl-medic">Platoon Medic:</label> <input id="pl-medic" type="text" placeholder="Enter name" /></li>
+                        <li>
+                            <label>@Labels["pl-leader"]:</label>
+                            <span>@Data["pl-leader"]</span>
+                        </li>
+                        <li>
+                            <label>@Labels["drone-operator"]:</label>
+                            <span>@Data["drone-operator"]</span>
+                        </li>
+                        <li>
+                            <label>@Labels["pl-medic"]:</label>
+                            <span>@Data["pl-medic"]</span>
+                        </li>
                     </ul>
                 </div>
             </div>
+
             <!-- Absent -->
             <div class="section status-sections">
-                <h4>Absent</h4>
+                <h4>@Labels["absent"]</h4>
                 <table>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Reason</th>
+                            <th>@Labels["name"]</th>
+                            <th>@Labels["reason"]</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><input type="text" placeholder="Enter name" /></td>
-                            <td><input type="text" placeholder="Enter reason" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" placeholder="Enter name" /></td>
-                            <td><input type="text" placeholder="Enter reason" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" placeholder="Enter name" /></td>
-                            <td><input type="text" placeholder="Enter reason" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" placeholder="Enter name" /></td>
-                            <td><input type="text" placeholder="Enter reason" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" placeholder="Enter name" /></td>
-                            <td><input type="text" placeholder="Enter reason" /></td>
-                        </tr>
+                        @foreach (var person in Absent)
+                        {
+                            <tr>
+                                <td><span>@person.Name</span></td>
+                                <td><span>@person.Reason</span></td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
 
             <!-- Late/Unsure -->
             <div class="section status-sections">
-                <h4>Late/Unsure</h4>
+                <h4>@Labels["late-unsure"]</h4>
                 <table>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Reason</th>
+                            <th>@Labels["name"]</th>
+                            <th>@Labels["reason"]</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><input type="text" placeholder="Enter name" /></td>
-                            <td><input type="text" placeholder="Enter reason" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" placeholder="Enter name" /></td>
-                            <td><input type="text" placeholder="Enter reason" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" placeholder="Enter name" /></td>
-                            <td><input type="text" placeholder="Enter reason" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" placeholder="Enter name" /></td>
-                            <td><input type="text" placeholder="Enter reason" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" placeholder="Enter name" /></td>
-                            <td><input type="text" placeholder="Enter reason" /></td>
-                        </tr>
+                        @foreach (var person in LateUnsure)
+                        {
+                            <tr>
+                                <td><span>@person.Name</span></td>
+                                <td><span>@person.Reason</span></td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
         </div>
 
         <div class="sections">
-            <!-- 1 Section -->
-            <div class="section">
-                <h4>1 Section (Alpha, Bravo)</h4>
-                <ul>
-                    <li><label for="slot10">SL:</label> <input id="slot10" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot11">Medic:</label> <input id="slot11" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot12">FTL:</label> <input id="slot12" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot13">Rifleman:</label> <input id="slot13" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot14">Medium AT:</label> <input id="slot14" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot15">AT Assist:</label> <input id="slot15" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot16">FTL:</label> <input id="slot16" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot17">Engineer:</label> <input id="slot17" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot18">LMG:</label> <input id="slot18" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot19">Ammo Bearer:</label> <input id="slot19" type="text" placeholder="Enter name" /></li>
-                </ul>
-            </div>
-
-            <!-- 2 Section -->
-            <div class="section">
-                <h4>2 Section (Charlie, Delta)</h4>
-                <ul>
-                    <li><label for="slot20">SL:</label> <input id="slot20" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot21">Medic:</label> <input id="slot21" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot22">FTL:</label> <input id="slot22" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot23">Rifleman:</label> <input id="slot23" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot24">Medium AT:</label> <input id="slot24" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot25">AT Assist:</label> <input id="slot25" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot26">FTL:</label> <input id="slot26" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot27">Engineer:</label> <input id="slot27" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot28">LMG:</label> <input id="slot28" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot29">Ammo Bearer:</label> <input id="slot29" type="text" placeholder="Enter name" /></li>
-                </ul>
-            </div>
-
-            <!-- 3 Section -->
-            <div class="section">
-                <h4>3 Section (Echo, Foxtrot)</h4>
-                <ul>
-                    <li><label for="slot30">SL:</label> <input id="slot30" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot31">Medic:</label> <input id="slot31" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot32">FTL:</label> <input id="slot32" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot33">Rifleman:</label> <input id="slot33" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot34">Medium AT:</label> <input id="slot34" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot35">AT Assist:</label> <input id="slot35" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot36">FTL:</label> <input id="slot36" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot37">Engineer:</label> <input id="slot37" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot38">LMG:</label> <input id="slot38" type="text" placeholder="Enter name" /></li>
-                    <li><label for="slot39">Ammo Bearer:</label> <input id="slot39" type="text" placeholder="Enter name" /></li>
-                </ul>
-            </div>
-        </div>
-        <div class="top-content">
-            <div class=".top-sections .status-sections . section">
+            <!-- Sections dynamically generated -->
+            @foreach (var section in Sections)
+            {
                 <div class="section">
-                    <h4>SupportRoles</h4>
+                    <h4>@Labels[section.Id]</h4>
                     <ul>
-                        <li><label for="support11">Pilot:</label> <input id="support11" type="text" placeholder="Enter name" /></li>
-                        <li><label for="support12">Co-Pilot:</label> <input id="support12" type="text" placeholder="Enter name" /></li>
-                        <li><label for="support13">Crew:</label> <input id="support13" type="text" placeholder="Enter name" /></li>
-                        <li><label for="support14">Crew:</label> <input id="support14" type="text" placeholder="Enter name" /></li>
+                        @foreach (var role in section.Roles)
+                        {
+                            <li>
+                                <label>@role.Name:</label>
+                                <span>@Data[role.Id]</span>
+                            </li>
+                        }
                     </ul>
                 </div>
-                <div class="section">
-                    <h4>SupportRoles</h4>
-                    <ul>
-                        <li><label for="support21">Pilot:</label> <input id="support21" type="text" placeholder="Enter name" /></li>
-                        <li><label for="support22">Co-Pilot:</label> <input id="support22" type="text" placeholder="Enter name" /></li>
-                        <li><label for="support23">Crew:</label> <input id="support23" type="text" placeholder="Enter name" /></li>
-                        <li><label for="support24">Crew:</label> <input id="support24" type="text" placeholder="Enter name" /></li>
-                    </ul>
-                </div>
-            </div>
-            <div class=".top-sections .status-sections . section">
-                <div class="section">
-                    <h4>SupportRoles</h4>
-                    <ul>
-                        <li><label for="support31">Pilot:</label> <input id="support31" type="text" placeholder="Enter name" /></li>
-                        <li><label for="support32">Co-Pilot:</label> <input id="support32" type="text" placeholder="Enter name" /></li>
-                        <li><label for="support33">Crew:</label> <input id="support33" type="text" placeholder="Enter name" /></li>
-                        <li><label for="support34">Crew:</label> <input id="support34" type="text" placeholder="Enter name" /></li>
-                    </ul>
-                </div>
-                <div class="section">
-                    <h4>SupportRoles</h4>
-                    <ul>
-                        <li><label for="support41">Pilot:</label> <input id="support41" type="text" placeholder="Enter name" /></li>
-                        <li><label for="support42">Co-Pilot:</label> <input id="support42" type="text" placeholder="Enter name" /></li>
-                        <li><label for="support43">Crew:</label> <input id="support43" type="text" placeholder="Enter name" /></li>
-                        <li><label for="support44">Crew:</label> <input id="support44" type="text" placeholder="Enter name" /></li>
-                    </ul>
-                </div>
-            </div>
-            <div class=".top-sections .status-sections . section">
-                <div class="section">
-                    <h4>Reserve</h4>
-                    <ul>
-                        <li><label for="Reserve1">Reserve:</label> <input id="Reserve1" type="text" placeholder="Enter name" /></li>
-                        <li><label for="Reserve2">Reserve:</label> <input id="Reserve2" type="text" placeholder="Enter name" /></li>
-                        <li><label for="Reserve3">Reserve:</label> <input id="Reserve3" type="text" placeholder="Enter name" /></li>
-                        <li><label for="Reserve4">Reserve:</label> <input id="Reserve4" type="text" placeholder="Enter name" /></li>
-                        <li><label for="Reserve5">Reserve:</label> <input id="Reserve5" type="text" placeholder="Enter name" /></li>
-                        <li><label for="Reserve6">Reserve:</label> <input id="Reserve6" type="text" placeholder="Enter name" /></li>
-                        <li><label for="Reserve7">Reserve:</label> <input id="Reserve7" type="text" placeholder="Enter name" /></li>
-                        <li><label for="Reserve8">Reserve:</label> <input id="Reserve8" type="text" placeholder="Enter name" /></li>
-                        <li><label for="Reserve9">Reserve:</label> <input id="Reserve9" type="text" placeholder="Enter name" /></li>
-                    </ul>
-                </div>
-            </div>
+            }
         </div>
     </div>
 
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="radio-frequencies-box">
-            <h3>Radio Frequencies</h3>
+            <h3>@Labels["radio-frequencies"]</h3>
             <ul>
-                <li><label>Command Net:</label> <span>50LR</span></li>
-                <li><label>1 Section SL  (1-1-0):</label> <span>71.0SR</span></li>
-                <li><label>1 Section FTL (1-1-1):</label> <span>71.1SR</span></li>
-                <li><label>1 Section FTL (1-1-2):</label> <span>71.2SR</span></li>
-                <li><label>2 Section SL  (1-2-0):</label> <span>72.0SR</span></li>
-                <li><label>2 Section FTL (1-2-1):</label> <span>72.1SR</span></li>
-                <li><label>2 Section FTL (1-2-2):</label> <span>72.2SR</span></li>
-                <li><label>3 Section SL  (1-3-0):</label> <span>73.0SR</span></li>
-                <li><label>3 Section FTL (1-3-1):</label> <span>73.1SR</span></li>
-                <li><label>3 Section FTL (1-3-2):</label> <span>73.2SR</span></li>
-                <li><label>Medic Net:</label> <span>90.0ASR</span></li>
-                <li><label>Logistics Net:</label> <span>50LR</span></li>
-                <li><label>Armoured Net:</label> <span>80LR</span></li>
-                <li><label>Air-to-Air:</label> <span>50LR</span></li>
+                @foreach (var frequency in RadioFrequencies)
+                {
+                    <li>
+                        <label>@frequency.Label:</label>
+                        <span>@frequency.Value</span>
+                    </li>
+                }
             </ul>
         </div>
 
         <div class="extra-intel-box">
-            <h3>Extra Intel</h3>
+            <h3>@Labels["extra-intel"]</h3>
             <ul>
-                <li><strong>IED/Trap/Mine Threat:</strong> <span>Medium</span></li>
-                <li><strong>Civilian Relationship:</strong> <span>Neutral</span></li>
-                <li><strong>Rules of Engagement:</strong> <span>Fire When Fired Upon</span></li>
-                <li><strong>Airspace:</strong> <span>Clear</span></li>
-                <li><strong>In-Game Timezone:</strong> <span>UTC+3</span></li>
-                <li><strong>Operation Day:</strong> <span>Sunday</span></li>
+                @foreach (var intel in ExtraIntel)
+                {
+                    <li>
+                        <strong>@intel.Key:</strong>
+                        <span>@intel.Value</span>
+                    </li>
+                }
             </ul>
         </div>
 
         <div class="relations">
-            <h3>Relations</h3>
+            <h3>@Labels["relations"]</h3>
             <div class="Factions">
-                <ul>
-                    <li><strong>BLUFOR:</strong> <span>Nato</span></li>
-                    <li><strong>War Support:</strong> <span>Holding</span></li>
-                </ul>
-                <ul>
-                    <li><strong>OPFOR:</strong> <span>Isis</span></li>
-                    <li><strong>War Support:</strong> <span>Hostile</span></li>
-                </ul>
-                <ul>
-                    <li><strong>Independant:</strong> <span>Tribal Resistance</span></li>
-                    <li><strong>War Support:</strong> <span>Hostile</span></li>
-                </ul>
+                @foreach (var faction in Factions)
+                {
+                    <ul>
+                        <li><strong>@faction.Key:</strong> <span>@faction.Name</span></li>
+                        <li><strong>@Labels["war-support"]:</strong> <span>@faction.Support</span></li>
+                    </ul>
+                }
             </div>
         </div>
     </div>
 </div>
+
+@code {
+    // Labels dictionary for all labels on the page
+    private Dictionary<string, string> Labels = new()
+    {
+        { "zeus-section", "Zeus (High Command)" },
+        { "zeus", "Zeus" },
+        { "roleplayer", "Roleplayer" },
+        { "hq-section", "HQ Section (Actual)" },
+        { "pl-leader", "Platoon Leader" },
+        { "drone-operator", "Drone Operator" },
+        { "pl-medic", "Platoon Medic" },
+        { "absent", "Absent" },
+        { "name", "Name" },
+        { "reason", "Reason" },
+        { "late-unsure", "Late/Unsure" },
+        { "radio-frequencies", "Radio Frequencies" },
+        { "extra-intel", "Extra Intel" },
+        { "relations", "Relations" },
+        { "war-support", "War Support" },
+        { "1-section", "1 Section (Alpha, Bravo)" },
+        { "2-section", "2 Section (Alpha, Bravo)" },
+        { "3-section", "3 Section (Alpha, Bravo)" },
+        { "armoured", "Armored Asset" }
+        // Add additional labels for other sections and roles
+    };
+
+    // Data dictionary for all dynamic data on the page
+    private Dictionary<string, string> Data = new()
+    {
+        { "zeus", "John Doe" },
+        { "roleplayer", "Jane Smith" },
+        { "pl-leader", "Captain Miller" },
+        { "drone-operator", "Lt. Carter" },
+        { "pl-medic", "Dr. Roberts" },
+        { "slot10", "Sgt. Williams" },
+        { "slot11", "Cpl. Brown" },
+        { "slot12", "Cpl. Johnson" },
+        { "slot13", "Pvt. Davis" },
+        { "slot14", "Pvt. Martinez" },
+        { "slot15", "Pvt. Smith" },
+        { "slot16", "Cpl. Thompson" },
+        { "slot17", "Eng. Taylor" },
+        { "slot18", "Pvt. Wilson" },
+        { "slot19", "Pvt. Lee" },
+        { "slot44", "Pvt. Lee" },
+        { "slot40", "Pvt. Lee" },
+        { "slot41", "Pvt. Lee" },
+        { "slot42", "Pvt. Lee" },
+        { "slot43", "Pvt. Lee" }
+        // Add additional data for other roles
+    };
+
+    // Sections data
+    private List<(string Id, List<(string Id, string Name)> Roles)> Sections = new()
+    {
+        ("1-section", new List<(string Id, string Name)>
+        {
+            ("slot10", "SL"),
+            ("slot11", "Medic"),
+            ("slot12", "FTL"),
+            ("slot13", "Rifleman"),
+            ("slot14", "Medium AT"),
+            ("slot15", "AT Assist"),
+            ("slot16", "FTL"),
+            ("slot17", "Engineer"),
+            ("slot18", "LMG"),
+            ("slot19", "Ammo Bearer")
+        }),
+        ("2-section", new List<(string Id, string Name)>
+        {
+            ("slot10", "SL"),
+            ("slot11", "Medic"),
+            ("slot12", "FTL"),
+            ("slot13", "Rifleman"),
+            ("slot14", "Medium AT"),
+            ("slot15", "AT Assist"),
+            ("slot16", "FTL"),
+            ("slot17", "Engineer"),
+            ("slot18", "LMG"),
+            ("slot19", "Ammo Bearer")
+        }),
+        ("3-section", new List<(string Id, string Name)>
+        {
+            ("slot10", "SL"),
+            ("slot11", "Medic"),
+            ("slot12", "FTL"),
+            ("slot13", "Rifleman"),
+            ("slot14", "Medium AT"),
+            ("slot15", "AT Assist"),
+            ("slot16", "FTL"),
+            ("slot17", "Engineer"),
+            ("slot18", "LMG"),
+            ("slot19", "Ammo Bearer")
+        }),
+        ("armoured", new List<(string Id, string Name)>
+        {
+            ("slot40", "Gunner"),
+            ("slot41", "Driver"),
+            ("slot42", "Commander"),
+            ("slot43", "Engineer")
+        })
+        // Add more sections here
+    };
+
+    private List<(string Name, string Reason)> Absent = new()
+    {
+        ("James", "Personal"),
+        ("Anna", "Vacation")
+    };
+
+    private List<(string Name, string Reason)> LateUnsure = new()
+    {
+        ("Michael", "Traffic"),
+        ("Sarah", "Delayed Flight")
+    };
+
+    private List<(string Label, string Value)> RadioFrequencies = new()
+    {
+        ("Command Net", "50LR"),
+        ("Medic Net", "90.0ASR")
+    };
+
+    private List<KeyValuePair<string, string>> ExtraIntel = new()
+    {
+        new("IED/Trap/Mine Threat", "Medium"),
+        new("Civilian Relationship", "Neutral")
+    };
+
+    private List<(string Key, string Name, string Support)> Factions = new()
+    {
+        ("BLUFOR", "NATO", "Holding"),
+        ("OPFOR", "ISIS", "Hostile")
+    };
+}
