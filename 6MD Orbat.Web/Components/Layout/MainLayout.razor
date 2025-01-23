@@ -1,0 +1,59 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager Navigation
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-bar px-4">
+            @if (Navigation.Uri.Contains("/orbat"))
+            {
+                <div class="top-bar-item">
+                    <h4>Name of OP:</h4>
+                    <h5>Operation Desert Rat</h5>
+                </div>
+                <div class="top-bar-item">
+                    <h4>Day & Time of OP:</h4>
+                    <h5>Fridays, 19:00 hrs</h5>
+                </div>
+            }
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+
+<style>
+    .main-layout {
+        font-family: Arial, sans-serif;
+    }
+
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .top-bar-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-sizing: border-box;
+    }
+
+    .content {
+        padding: 20px;
+    }
+</style>

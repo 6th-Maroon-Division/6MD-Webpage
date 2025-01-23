@@ -1,0 +1,9 @@
+Orbat:
+	Design
+	-	Add dark mode
+	-	Improve mobile design
+	Attendance with button on roles
+Services
+-	Implement a Discord Bot
+	-	Promotion
+	-	Authentication for user groups
