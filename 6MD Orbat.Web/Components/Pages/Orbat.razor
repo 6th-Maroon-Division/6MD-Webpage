@@ -1,8 +1,78 @@
 ﻿@page "/orbat"
+@rendermode InteractiveServer
 @using System.Collections.Generic
 @using Microsoft.AspNetCore.Components
 
+<!-- Buttons -->
+<div class="action-buttons">
+    <button class="btn-attending" @onclick="ShowAttendingModal">Attending</button>
+    <button class="btn-absent" @onclick="ShowAbsentModal">Absent</button>
+    <button class="btn-late" @onclick="ShowLateUnsureModal">Late/Unsure</button>
+</div>
+
+<!-- Modals -->
+@if (IsAttendingModalOpen)
+{
+    <div class="modal">
+        <div class="modal-content">
+            <h3>Attending</h3>
+            <label for="section">Select Section:</label>
+            <select id="section" @bind="SelectedSection">
+                <option value="">--Select Section--</option>
+                @foreach (var section in Sections)
+                {
+                    <option value="@(section.Id)">@Labels[section.Id]</option>
+                }
+            </select>
+
+            <label for="role">Select Role:</label>
+            <select id="role" @bind="SelectedRole" disabled="@(string.IsNullOrEmpty(SelectedSection))">
+                <option value="">--Select Role--</option>
+                @if (!string.IsNullOrEmpty(SelectedSection))
+                {
+                    @foreach (var role in Sections.First(s => s.Id == SelectedSection).Roles)
+                    {
+                        <option value="@role.Id">@role.Name</option>
+                    }
+                }
+            </select>
+
+            <button class="btn-save" @onclick="SaveAttending">Save</button>
+            <button class="btn-cancel" @onclick="CloseModals">Cancel</button>
+        </div>
+    </div>
+}
+
+@if (IsAbsentModalOpen)
+{
+    <div class="modal">
+        <div class="modal-content">
+            <h3>Absent</h3>
+            <label for="reason">Reason:</label>
+            <textarea id="reason" @bind="AbsentReason"></textarea>
+            <button class="btn-save" @onclick="SaveAbsent">Save</button>
+            <button class="btn-cancel" @onclick="CloseModals">Cancel</button>
+        </div>
+    </div>
+}
+
+@if (IsLateUnsureModalOpen)
+{
+    <div class="modal">
+        <div class="modal-content">
+            <h3>Late/Unsure</h3>
+            <label for="duration">Estimated Time (if late):</label>
+            <input id="duration" type="text" @bind="LateDuration" />
+            <label for="unsure-reason">Reason:</label>
+            <textarea id="unsure-reason" @bind="LateReason"></textarea>
+            <button class="btn-save" @onclick="SaveLateUnsure">Save</button>
+            <button class="btn-cancel" @onclick="CloseModals">Cancel</button>
+        </div>
+    </div>
+}
+
 <div class="operation-dashboard">
+
     <!-- Main Sections -->
     <div class="main-content">
         <div class="top-content">
@@ -284,4 +354,72 @@
         ("BLUFOR", "NATO", "Holding"),
         ("OPFOR", "ISIS", "Hostile")
     };
+
+
+    private bool IsAttendingModalOpen = false;
+    private bool IsAbsentModalOpen = false;
+    private bool IsLateUnsureModalOpen = false;
+    private string _selectedSection = string.Empty;
+    private string SelectedSection
+    {
+        get => _selectedSection;
+        set
+        {
+            if (_selectedSection != value)
+            {
+                _selectedSection = value;
+                SelectedRole = string.Empty; // Reset the role when section changes
+            }
+        }
+    }
+    private string SelectedRole = string.Empty;
+    private string AbsentReason = string.Empty;
+    private string LateDuration = string.Empty;
+    private string LateReason = string.Empty;
+
+    private void ShowAttendingModal()
+    {
+        IsAttendingModalOpen = true;
+    }
+
+    private void ShowAbsentModal()
+    {
+        IsAbsentModalOpen = true;
+    }
+
+    private void ShowLateUnsureModal()
+    {
+        IsLateUnsureModalOpen = true;
+    }
+
+    private void CloseModals()
+    {
+        IsAttendingModalOpen = false;
+        IsAbsentModalOpen = false;
+        IsLateUnsureModalOpen = false;
+
+        SelectedSection = string.Empty;
+        SelectedRole = string.Empty;
+        AbsentReason = string.Empty;
+        LateDuration = string.Empty;
+        LateReason = string.Empty;
+    }
+
+    private void SaveAttending()
+    {
+        Console.WriteLine($"Attending: Section={SelectedSection}, Role={SelectedRole}");
+        CloseModals();
+    }
+
+    private void SaveAbsent()
+    {
+        Console.WriteLine($"Absent: Reason={AbsentReason}");
+        CloseModals();
+    }
+
+    private void SaveLateUnsure()
+    {
+        Console.WriteLine($"Late/Unsure: Duration={LateDuration}, Reason={LateReason}");
+        CloseModals();
+    }
 }
