@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		todo.txt = todo.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructure", "DataStructure\DataStructure.csproj", "{37C1F8B4-79AC-4946-8D3A-BA868285C30E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{0FFC7BB1-76D3-4A28-A4D0-10A297DB843B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FFC7BB1-76D3-4A28-A4D0-10A297DB843B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FFC7BB1-76D3-4A28-A4D0-10A297DB843B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37C1F8B4-79AC-4946-8D3A-BA868285C30E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37C1F8B4-79AC-4946-8D3A-BA868285C30E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37C1F8B4-79AC-4946-8D3A-BA868285C30E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37C1F8B4-79AC-4946-8D3A-BA868285C30E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<efcore namespace="DataStructure" p1:name="DB" p1:Guid="ca606bfa-3641-4454-a2c7-9889947ff811" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0">
+  <class name="$EnumTypes">
+    <EnumType Name="Status" UnderlyingType="Byte" class="DataStructure.Status" p1:Guid="39f0644c-f232-4129-8ad8-efea29fb4b27">
+      <Member Name="Attending" p1:Guid="54933083-0ec4-4cf3-860e-feb66ab73969" />
+      <Member Name="Late_Unsure" p1:Guid="b74c6dad-0260-4be7-8c40-e180349ea812" />
+      <Member Name="Absent" p1:Guid="53fc4132-c3bb-4b68-b253-3f791450a946" />
+    </EnumType>
+    <EnumType Name="AttendanceStatus" UnderlyingType="Byte" class="DataStructure.AttendanceStatus" p1:Guid="65622d3f-ca71-4cf3-a350-64661a400984">
+      <Member Name="Attended" p1:Guid="82859eb2-c3f7-40f7-b895-cb1dab5660bc" />
+      <Member Name="Absent" p1:Guid="372fe736-f046-4a44-b550-4b280266cdfd" />
+      <Member Name="Noted_Absent" p1:Guid="3885c873-ecd0-42d8-84cb-1fa7517c2410" />
+      <Member Name="LOA" p1:Guid="cfda94ff-4796-4dfe-8114-74c97d76b17f" />
+    </EnumType>
+  </class>
+  <class name="User" entity-set="Users" p1:Guid="877a284e-bbd7-4835-b5f9-502f1ab1c053">
+    <id name="ID" type="Int32" p1:ValidateRequired="true" p1:Guid="19e9263f-5e24-4b0c-8835-be96d343bb9d">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="874ccf2d-1554-407b-abd5-82924d0a7f5b">
+      <column name="" />
+    </property>
+    <property name="DateJoined" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="d8f30ecc-29e0-47bc-b62c-c91fe2dcb6df">
+      <column name="" />
+    </property>
+    <property name="Retired" type="Boolean" p1:ValidateRequired="true" p1:Guid="d6f5481c-5da8-4967-99c6-bc70064d3cfb">
+      <column name="" />
+    </property>
+    <property name="DiscordID" type="Int64" p1:ValidateRequired="true" p1:Guid="0432e530-80a7-4381-bc31-1450078d78a5">
+      <column name="" />
+    </property>
+    <property name="UserPremissions" type="Int64" p1:ValidateRequired="true" p1:Guid="487ebf08-dc74-4155-bb87-fd322c8fbf16">
+      <column name="" />
+    </property>
+    <property name="RankID" type="Int32" p1:ValidateRequired="true" p1:Guid="a087e83f-6f3e-47ac-81e6-43d38675b9a1">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="Rank" entity-set="Ranks" p1:Guid="b7c275a2-0aea-4fa6-a81a-cefa807ab85f">
+    <id name="ID" type="Int32" p1:ValidateRequired="true" p1:Guid="1dfb9db5-67cc-4465-bcf5-48e0ae56385f">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="7494335a-e240-4fde-b004-799bf3026643">
+      <column name="" />
+    </property>
+    <property name="DiscordRoleID" type="Int64" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="2050777c-669b-4cb2-9ff4-057bf8b0e39c">
+      <column name="" />
+    </property>
+    <property name="abbreviation" type="String" p1:ValidateRequired="true" p1:Guid="49b8aebc-9fcc-4e3c-8d90-59a06e262b47">
+      <column name="" />
+    </property>
+    <property name="Color" type="Int32" p1:ValidateRequired="true" p1:Guid="30349428-facc-49b7-a32c-549356a8dcf5">
+      <column name="" />
+    </property>
+  </class>
+  <class name="Groups" entity-set="Groups" p1:Guid="ab04771a-2ef6-40bd-a527-c8242f2e927a">
+    <id name="ID" type="Int32" p1:ValidateRequired="true" p1:Guid="33e526e5-036f-4638-9286-14016a29eebe">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="2af83654-da53-47fb-ac12-4323b9aec9c6">
+      <column name="" />
+    </property>
+    <property name="Premissions" type="Int64" p1:ValidateRequired="true" p1:Guid="5fdbdcef-3fe1-428e-a7d3-8e833a0626bc">
+      <column name="" />
+    </property>
+    <property name="DiscordRoleID" type="Int64" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="f780d57a-c222-42b1-a89e-7e7cb086dab6">
+      <column name="" />
+    </property>
+    <property name="RoleColor" type="String" p1:ValidateRequired="true" p1:Guid="7452de4a-c34c-44ae-91d7-1727b71616e4">
+      <column name="" />
+    </property>
+  </class>
+  <class name="LOA" entity-set="LOAs" p1:Guid="f08d4c2f-2689-4717-9a70-bc296a1ac8cf">
+    <id name="ID" type="Int32" p1:ValidateRequired="true" p1:Guid="2c11c562-c121-430f-b583-dcc1e1018326">
+      <column name="" />
+    </id>
+    <property name="Start" type="Date" p1:ValidateRequired="true" p1:Guid="d3842892-27a0-46ea-b748-262cea4249fe">
+      <column name="" />
+    </property>
+    <property name="End" type="Date" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="8d12b22d-dbee-493b-9e72-f77112de4996">
+      <column name="" />
+    </property>
+    <property name="EndIndefinet" type="Boolean" p1:ValidateRequired="true" p1:Guid="f89af3c0-7f48-4e87-b1b8-b7cfdda1bcef">
+      <column name="" />
+    </property>
+    <property name="Reason" type="String" p1:ValidateRequired="true" p1:Guid="54ef03b8-a364-448a-aa5b-8717560e8fd6">
+      <column name="" />
+    </property>
+    <property name="LastEdit" type="DateTime" value-generated="OnAddOrUpdate" p1:ValidateRequired="true" p1:Guid="3e302a07-ce10-4220-a91b-3759c159e5a6">
+      <column name="" />
+    </property>
+    <property name="UserID" type="Int32" p1:ValidateRequired="true" p1:Guid="74cc966b-cff2-47cb-85b7-9ac3cbe0c022">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="Operation" entity-set="Operations" p1:Guid="009a2465-8103-4bfa-9589-3a402132d175">
+    <id name="ID" type="Int32" p1:ValidateRequired="true" p1:Guid="81902795-7044-434d-bc2f-e46d92cf90f6">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="a6d921ba-662b-4857-88ba-2f71fe0b78f0">
+      <column name="" />
+    </property>
+    <property name="DateTimeOfOP" type="DateTime" p1:ValidateRequired="true" p1:Guid="4c290b8a-47ec-4405-9a34-48450e2965bd">
+      <column name="" />
+    </property>
+    <property name="Created" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="95908bf4-7052-46d5-abf1-74b136c2d57d">
+      <column name="" />
+    </property>
+    <property name="LastModified" type="DateTime" value-generated="OnAddOrUpdate" p1:ValidateRequired="true" p1:Guid="b8e8ee8f-f801-4729-b0c1-4ba3cf89872d">
+      <column name="" />
+    </property>
+  </class>
+  <class name="Section" entity-set="Sections" p1:Guid="5e385f3d-4801-4f16-9b1b-7002456e0c50">
+    <id name="ID" type="Int32" p1:ValidateRequired="true" p1:Guid="2523535b-02ea-495e-b000-0377bf7ad093">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="afb78432-eb3c-4150-978b-eaf515cd409e">
+      <column name="" />
+    </property>
+    <property name="Type" type="String" p1:ValidateRequired="true" p1:Guid="2a26693f-4d74-421d-b7e1-b0846a7e21aa">
+      <column name="" />
+    </property>
+    <property name="OperationID" type="Int32" p1:ValidateRequired="true" p1:Guid="b8d78e2c-5ff8-4e68-96b8-15455723702c">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="Slot" entity-set="Slots" p1:Guid="9edf45f1-3379-479e-a0ed-f807968741d8">
+    <id name="ID" type="Int32" p1:ValidateRequired="true" p1:Guid="24ba2ecd-dbed-48e8-b45e-180cf9f84974">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="c661faf3-27f6-4f58-9bdf-b3aa6f5a2c64">
+      <column name="" />
+    </property>
+    <property name="Color" type="Int32" p1:ValidateRequired="true" p1:Guid="9896eb12-9316-408b-bfa5-4f3aef387fac">
+      <column name="" />
+    </property>
+    <property name="SectionID" type="Int32" p1:ValidateRequired="true" p1:Guid="fae6ddbc-9a57-4cbe-8a59-fb4a128a35f5">
+      <column name="" not-null="False" />
+    </property>
+    <property name="TrainingID" type="Int32" p1:ValidateRequired="true" p1:Guid="cc8e52d4-f219-4be4-95e1-d1059d049e88">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="Training" entity-set="Trainings" p1:Guid="9372d54e-0fcc-4704-b956-0464c4216026">
+    <id name="ID" type="Int32" p1:ValidateRequired="true" p1:Guid="7d80e025-2215-4ad9-aa33-5268861626b0">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="8a041bb0-f1b2-4fba-890d-ec218cebeebb">
+      <column name="" />
+    </property>
+  </class>
+  <class name="Trainers" entity-set="Trainers" p1:Guid="1b145e16-df80-4099-bf6e-cfdd13311eb9">
+    <id name="ID" type="Int32" p1:ValidateRequired="true" p1:Guid="af5cceac-cefb-470e-addf-666306139038">
+      <column name="" />
+    </id>
+    <property name="HeadTrainer" type="Boolean" p1:ValidateRequired="true" p1:Guid="977f38a7-5d27-44d6-af78-900f1ca8591c">
+      <column name="" />
+    </property>
+    <property name="Active" type="Boolean" p1:ValidateRequired="true" p1:Guid="0d976360-e512-4f80-90fb-213a8d026f15">
+      <column name="" />
+    </property>
+    <property name="TrainingID" type="Int32" p1:ValidateRequired="true" p1:Guid="89c2e163-aa42-453c-95b6-cbe08c8ca567">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="OPAttendance" entity-set="OPAttendances" p1:Guid="67ef9cb8-5303-4e1a-89bf-adb973836c3f">
+    <id name="ID" type="Int32" p1:ValidateRequired="true" p1:Guid="04b61bb1-c120-4538-a9f9-9c85186dd199">
+      <column name="" />
+    </id>
+    <property name="Status" type="DataStructure.Status" p1:ValidateRequired="true" p1:Guid="773a3c2b-fa60-443c-bcf3-97548ed7a046">
+      <column name="" />
+    </property>
+    <property name="Late" type="Time" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="e97e7d85-e567-4469-b840-fed856e9cec8">
+      <column name="" />
+    </property>
+    <property name="Reason" type="String" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="9de767c9-699a-4976-a33e-f046041cca29">
+      <column name="" />
+    </property>
+    <property name="OperationID" type="Int32" p1:ValidateRequired="true" p1:Guid="f3241d8d-f513-45cb-a84a-1332d54338bc">
+      <column name="" not-null="False" />
+    </property>
+    <property name="UserID" type="Int32" p1:ValidateRequired="true" p1:Guid="98767453-686f-4c73-b922-94ea6ea2f495">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="Attendance" entity-set="Attendances" p1:Guid="0bc224c1-b83d-407a-a5be-0f5419cc0ba4">
+    <id name="ID" type="Int32" p1:ValidateRequired="true" p1:Guid="3c8f8202-5479-49bc-9923-8d6cf7c8aed9">
+      <column name="" />
+    </id>
+    <property name="Date" type="Date" p1:ValidateRequired="true" p1:Guid="0d77634a-a542-454d-9f01-9b14d85c6f2a">
+      <column name="" />
+    </property>
+    <property name="LastChanged" type="DateTime" value-generated="OnAddOrUpdate" p1:ValidateRequired="true" p1:Guid="9c6f3d68-4117-49eb-ab89-cde9b0d62ce1">
+      <column name="" />
+    </property>
+    <property name="Status" type="DataStructure.AttendanceStatus" p1:ValidateRequired="true" p1:Guid="f184147e-19b9-42b6-bd2e-b3b5c78625a9">
+      <column name="" />
+    </property>
+    <property name="UserID" type="Int32" p1:ValidateRequired="true" p1:Guid="0d89870c-363e-448d-8db5-3caef02bc3cb">
+      <column name="" not-null="False" />
+    </property>
+    <property name="AttendanceTakenByID" type="Int32" p1:ValidateRequired="true" p1:Guid="1bfe6e54-ca3a-4a73-8041-ef9c0e42a8d1">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="Deduction" entity-set="Deductions" p1:Guid="be4e7b26-7f4b-49fb-8311-ad8f75b54171">
+    <id name="ID" type="Int32" p1:ValidateRequired="true" p1:Guid="0b65af35-2472-4afd-9cb3-8474da1dc696">
+      <column name="" />
+    </id>
+    <property name="Points" type="Int32" p1:ValidateRequired="true" p1:Guid="cd2cb69d-1d4c-4350-b8b3-f4357d2ce31a">
+      <column name="" />
+    </property>
+    <property name="LastDeduction" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="d695ed47-3217-4d61-a2f5-2a8e83b90216">
+      <column name="" />
+    </property>
+    <property name="UserID" type="Int32" p1:ValidateRequired="true" p1:Guid="f3e9a579-57b7-4ad8-b3d6-d325e591a708">
+      <column name="" not-null="False" />
+    </property>
+    <property name="UserID1" type="Int32" p1:ValidateRequired="true" p1:Guid="098bc8f1-4aaf-4eaf-8fbb-f6d69dc0c926">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <associations>
+    <association name="Rank_User" cardinality="OneToMany" p1:Guid="22e339fa-32bf-4768-a2d9-ffcd0437532f">
+      <end1 multiplicity="One" name="Rank" class="User" relation-class="Rank" constrained="True" lazy="False" p1:Guid="b10b7b23-9eae-4a7c-927c-875d3437b7ff">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="Many" name="Users" class="Rank" relation-class="User" lazy="False" p1:Guid="1d73bf8f-611f-4caf-9985-65ba36019d6c">
+        <property name="RankID" />
+      </end2>
+    </association>
+    <association name="User_LOA" cardinality="OneToMany" p1:Guid="dbf70616-a7f3-487e-a8be-37eb5ed576df">
+      <end1 multiplicity="One" name="User" class="LOA" relation-class="User" constrained="True" lazy="False" p1:Guid="adefa1bf-2c38-4992-bd51-ba4e23789122">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="Many" name="LOAs" class="User" relation-class="LOA" lazy="False" p1:Guid="7ef09711-3adb-423d-9ea9-42337c7e3cd2">
+        <property name="UserID" />
+      </end2>
+    </association>
+    <association name="Operation_User" cardinality="OneToOne" p1:Guid="3feeb85e-1310-4f95-a04d-46d662fc77e0">
+      <end1 multiplicity="One" name="Operation" class="User" relation-class="Operation" constrained="False" lazy="False" p1:Guid="7142c1cf-8f71-4fb9-85b8-6640f94967d3">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="One" name="User" class="Operation" relation-class="User" constrained="False" lazy="False" p1:Guid="38572ee3-c0f4-4e2a-92f6-90998c7fe5f4">
+        <property name="ID" />
+      </end2>
+    </association>
+    <association name="Operation_Section" cardinality="OneToMany" on-delete="Cascade" p1:Guid="464779c3-9157-43aa-a4a3-02851ea407d1">
+      <end1 multiplicity="One" name="Operation" class="Section" relation-class="Operation" constrained="True" lazy="False" p1:Guid="71a6712b-21d8-413d-9b15-aeadf53aa8cc">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="Many" name="Sections" class="Operation" relation-class="Section" lazy="False" p1:Guid="38619405-e9cf-499a-b786-81d8b7f87137">
+        <property name="OperationID" />
+      </end2>
+    </association>
+    <association name="Groups_User" cardinality="ManyToMany" p1:Guid="a85fc085-c3fb-4036-b6d4-4eec9be62dfa">
+      <end1 multiplicity="Many" name="Groups" class="User" relation-class="Groups" lazy="False" p1:Guid="3c5e50f8-473b-432f-9388-efe2eebad0ca">
+        <property name="ID" column="GroupID" />
+      </end1>
+      <end2 multiplicity="Many" name="Users" class="Groups" relation-class="User" lazy="False" p1:Guid="76682868-578b-4153-9159-e93bbc2391dd">
+        <property name="ID" column="UserID" />
+      </end2>
+    </association>
+    <association name="Section_Slot" cardinality="OneToMany" on-delete="Cascade" p1:Guid="9a2e86d1-d986-40be-b668-59c47613fcb0">
+      <end1 multiplicity="One" name="Section" class="Slot" relation-class="Section" constrained="True" lazy="False" p1:Guid="3753457c-6287-4f71-9314-c35151480b94">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="Many" name="Slots" class="Section" relation-class="Slot" lazy="False" p1:Guid="601844f2-75ff-49fe-a85e-2f4572389952">
+        <property name="SectionID" />
+      </end2>
+    </association>
+    <association name="Training_Trainers" cardinality="OneToMany" p1:Guid="dbdaa3a4-9ce2-49b4-8f22-e454cb26b5bd">
+      <end1 multiplicity="One" name="Training" class="Trainers" relation-class="Training" constrained="True" lazy="False" p1:Guid="c91504ca-6bea-4f81-a5fd-62e343e8a631">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="Many" name="Trainers" class="Training" relation-class="Trainers" lazy="False" p1:Guid="c3dc3a33-7a9a-4a0d-a5d1-6a5bed2bec42">
+        <property name="TrainingID" />
+      </end2>
+    </association>
+    <association name="User_Trainers" cardinality="ManyToMany" p1:Guid="a41d235a-e2d4-4bd0-bee4-19fbe56e7c16">
+      <end1 multiplicity="Many" name="Users" class="Trainers" relation-class="User" lazy="False" p1:Guid="1623239d-e2a8-4dcc-bb9c-866c43753007">
+        <property name="ID" column="UserID" />
+      </end1>
+      <end2 multiplicity="Many" name="Trainers" class="User" relation-class="Trainers" lazy="False" p1:Guid="4500d302-dc97-48ea-ace3-0db891ff2651">
+        <property name="ID" column="TrainerID" />
+      </end2>
+    </association>
+    <association name="User_Training" cardinality="ManyToMany" p1:Guid="f9850702-effa-4a3f-a41c-660738bf0a0c">
+      <end1 multiplicity="Many" name="Users" class="Training" relation-class="User" lazy="False" p1:Guid="ddfe36f5-42fb-405f-be55-35b1b1d4abb4">
+        <property name="ID" column="UserID" />
+      </end1>
+      <end2 multiplicity="Many" name="Trainings" class="User" relation-class="Training" lazy="False" p1:Guid="9a3e3d26-fbeb-45f8-af7a-ba63f56b595e">
+        <property name="ID" column="TrainingsID" />
+      </end2>
+    </association>
+    <association name="Training_Slot" cardinality="OneToMany" p1:Guid="949505c0-aa40-483e-99e6-aa32447b43ac">
+      <end1 multiplicity="One" name="Training" class="Slot" relation-class="Training" constrained="True" lazy="False" p1:Guid="45def86c-0022-4517-906d-4a4268ffb6ec">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="Many" name="Slots" class="Training" relation-class="Slot" lazy="False" p1:Guid="0d5ac626-e503-43a0-a537-2943259f0b7d">
+        <property name="TrainingID" />
+      </end2>
+    </association>
+    <association name="Operation_OPAttendance" cardinality="OneToMany" p1:Guid="2db80727-b623-4957-a15c-5a0dc00e4bf4">
+      <end1 multiplicity="One" name="Operation" class="OPAttendance" relation-class="Operation" constrained="True" lazy="False" p1:Guid="459f87c7-cc20-4ab1-9e3d-598c36409e2d">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="Many" name="OPAttendances" class="Operation" relation-class="OPAttendance" lazy="False" p1:Guid="d39a84db-446d-4470-9815-47cc3b308d65">
+        <property name="OperationID" />
+      </end2>
+    </association>
+    <association name="User_OPAttendance" cardinality="OneToMany" p1:Guid="2bf07171-1db7-4efb-b855-1c50b7696eaa">
+      <end1 multiplicity="One" name="User1" class="OPAttendance" relation-class="User" constrained="True" lazy="False" p1:Guid="5e4fbd7c-6a22-43d5-b65c-281755872dae">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="Many" name="OPAttendances" class="User" relation-class="OPAttendance" lazy="False" p1:Guid="3dce7a45-0542-44ba-8ab1-4f352335e143">
+        <property name="UserID" />
+      </end2>
+    </association>
+    <association name="OPAttendance_Slot" cardinality="OneToOne" p1:Guid="d52a3b2f-598e-46bc-b7e8-f743890c13aa">
+      <end1 multiplicity="ZeroOrOne" name="OPAttendance" class="Slot" relation-class="OPAttendance" constrained="False" lazy="False" p1:Guid="4c349c1c-fa5d-411b-8927-e95c8b8bf941">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="One" name="Slot" class="OPAttendance" relation-class="Slot" constrained="True" lazy="False" p1:Guid="e6bed54c-570b-43ed-bdcd-bcadb227a7b3">
+        <property name="ID" />
+      </end2>
+    </association>
+    <association name="User_Attendance" cardinality="OneToMany" p1:Guid="8a4c520e-a72a-4a66-951e-acb022111a32">
+      <end1 multiplicity="One" name="User" class="Attendance" relation-class="User" constrained="True" lazy="False" p1:Guid="4eaa7133-6b2b-4ae9-8a81-fa06c51827c1">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="Many" name="Attendances" class="User" relation-class="Attendance" lazy="False" p1:Guid="95dfed2e-4097-406b-b7eb-dc7298d1ebba">
+        <property name="UserID" />
+      </end2>
+    </association>
+    <association name="Attendance_Operation" cardinality="OneToOne" on-delete="SetNull" p1:Guid="557bed5a-93bf-47d6-8351-79d2bb98a8e4">
+      <end1 multiplicity="One" name="Attendance" class="Operation" relation-class="Attendance" constrained="False" lazy="False" p1:Guid="ee946e3f-fab3-44c6-9df8-c20b4b4dd5ee">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="One" name="Operation" class="Attendance" relation-class="Operation" constrained="False" lazy="False" p1:Guid="a741b24d-b281-4286-a74a-16dddab07f6f">
+        <property name="ID" />
+      </end2>
+    </association>
+    <association name="User_Deduction" cardinality="OneToMany" p1:Guid="28f8bf33-3f59-4a4c-b9b7-57472bb46d2d">
+      <end1 multiplicity="One" name="User" class="Deduction" relation-class="User" constrained="True" lazy="False" p1:Guid="d23a49bf-47aa-4243-bda8-02b59974408c">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="Many" name="Deductions" class="User" relation-class="Deduction" lazy="False" p1:Guid="b0d0d991-306e-4796-aa54-e8d641cdc399">
+        <property name="UserID" />
+      </end2>
+    </association>
+    <association name="User_Deduction1" cardinality="OneToMany" p1:Guid="2f582e52-e0cb-4137-a172-18c36416903b">
+      <end1 multiplicity="One" name="DeductedBy" class="Deduction" relation-class="User" constrained="True" lazy="False" p1:Guid="f9bdc9ac-6e14-48b8-bb3b-5555f4ae67b7">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="Many" name="DeductionsGiven" class="User" relation-class="Deduction" lazy="False" p1:Guid="19449983-a455-409f-b632-b86448bf6f75">
+        <property name="UserID1" />
+      </end2>
+    </association>
+    <association name="User_Attendance1" cardinality="OneToMany" p1:Guid="9d6acbc1-6efa-4248-a130-3d87bb6e8d30">
+      <end1 multiplicity="One" name="AttendanceTakenBy" class="Attendance" relation-class="User" constrained="True" lazy="False" p1:Guid="a656a3c6-f7a8-4099-b1cd-6d7fa6cd302e">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="Many" name="AttendanceTaken" class="User" relation-class="Attendance" lazy="False" p1:Guid="30318165-73bd-44f7-bfa2-88ff60b89f69">
+        <property name="AttendanceTakenByID" />
+      </end2>
+    </association>
+  </associations>
+</efcore>

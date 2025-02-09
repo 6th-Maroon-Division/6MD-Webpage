@@ -6,6 +6,8 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.Services.AddProblemDetails();
 
+//builder.AddNpgsqlDbContext<Database.OrbatContext>("6MDDatabase");
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
