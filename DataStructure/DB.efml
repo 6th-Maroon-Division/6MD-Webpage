@@ -12,6 +12,10 @@
       <Member Name="Noted_Absent" p1:Guid="3885c873-ecd0-42d8-84cb-1fa7517c2410" />
       <Member Name="LOA" p1:Guid="cfda94ff-4796-4dfe-8114-74c97d76b17f" />
     </EnumType>
+    <EnumType Name="OpType" UnderlyingType="Byte" class="OpType" p1:Guid="750665ea-343b-474b-b021-cb7b7bff01d1">
+      <Member Name="MainOP" p1:Guid="62b21aa0-260f-43f1-8da2-8c929ef70d45" />
+      <Member Name="SideOP" p1:Guid="225dfadf-c2b3-4bb3-8b07-56ba95b9d5be" />
+    </EnumType>
   </class>
   <class name="User" entity-set="Users" p1:Guid="877a284e-bbd7-4835-b5f9-502f1ab1c053">
     <id name="ID" type="Int32" p1:ValidateRequired="true" p1:Guid="19e9263f-5e24-4b0c-8835-be96d343bb9d">
@@ -107,6 +111,9 @@
       <column name="" />
     </property>
     <property name="LastModified" type="DateTime" value-generated="OnAddOrUpdate" p1:ValidateRequired="true" p1:Guid="b8e8ee8f-f801-4729-b0c1-4ba3cf89872d">
+      <column name="" />
+    </property>
+    <property name="Type" type="DataStructure.OpType" p1:ValidateRequired="true" p1:Guid="bb083005-c845-4310-916f-266332f84ef6">
       <column name="" />
     </property>
   </class>

@@ -21,11 +21,9 @@ using System.Linq.Expressions;
 
 namespace DataStructure
 {
-    public enum AttendanceStatus : byte
+    public enum OpType : byte
     {
-        Attended,
-        Absent,
-        Noted_Absent,
-        LOA
+        MainOP,
+        SideOP
     }
 }
