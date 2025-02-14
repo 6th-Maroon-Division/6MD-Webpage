@@ -48,7 +48,7 @@ namespace DataStructure
                 (!optionsBuilder.Options.Extensions.OfType<RelationalOptionsExtension>().Any(ext => !string.IsNullOrEmpty(ext.ConnectionString) || ext.Connection != null) &&
                  !optionsBuilder.Options.Extensions.Any(ext => !(ext is RelationalOptionsExtension) && !(ext is CoreOptionsExtension))))
             {
-                optionsBuilder.UsePostgreSql(@"");
+                optionsBuilder.UseNpgsql(@"");
             }
             CustomizeConfiguration(ref optionsBuilder);
             base.OnConfiguring(optionsBuilder);
