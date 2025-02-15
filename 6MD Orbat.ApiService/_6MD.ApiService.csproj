@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\6MD Orbat.ServiceDefaults\6MD Orbat.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\6MD Orbat.ServiceDefaults\_6MD.ServiceDefaults.csproj" />
     <ProjectReference Include="..\DataStructure\DataStructure.csproj" />
   </ItemGroup>
 

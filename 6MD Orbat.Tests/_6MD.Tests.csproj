@@ -20,10 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\6MD Orbat.ApiService\6MD Orbat.ApiService.csproj" />
-    <ProjectReference Include="..\6MD Orbat.AppHost\6MD Orbat.AppHost.csproj" />
-    <ProjectReference Include="..\6MD Orbat.ServiceDefaults\6MD Orbat.ServiceDefaults.csproj" />
-    <ProjectReference Include="..\6MD Orbat.Web\6MD Orbat.Web.csproj" />
+    <ProjectReference Include="..\6MD Orbat.ApiService\_6MD.ApiService.csproj" />
+    <ProjectReference Include="..\6MD Orbat.AppHost\_6MD.AppHost.csproj" />
+    <ProjectReference Include="..\6MD Orbat.ServiceDefaults\_6MD.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\6MD Orbat.Web\_6MD.Web.csproj" />
     <ProjectReference Include="..\DataStructure\DataStructure.csproj" />
   </ItemGroup>
 

@@ -2,15 +2,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6MD Orbat.AppHost", "6MD Orbat.AppHost\6MD Orbat.AppHost.csproj", "{B329944D-A2E8-4A6C-B569-382E9420AA0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.AppHost", "6MD Orbat.AppHost\_6MD.AppHost.csproj", "{B329944D-A2E8-4A6C-B569-382E9420AA0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6MD Orbat.ServiceDefaults", "6MD Orbat.ServiceDefaults\6MD Orbat.ServiceDefaults.csproj", "{40CEDF4B-0701-4D4A-A85A-EA5F1DC97D24}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.ServiceDefaults", "6MD Orbat.ServiceDefaults\_6MD.ServiceDefaults.csproj", "{40CEDF4B-0701-4D4A-A85A-EA5F1DC97D24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6MD Orbat.ApiService", "6MD Orbat.ApiService\6MD Orbat.ApiService.csproj", "{CE21B8AA-7661-420C-887D-1E062A50D474}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.ApiService", "6MD Orbat.ApiService\_6MD.ApiService.csproj", "{CE21B8AA-7661-420C-887D-1E062A50D474}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6MD Orbat.Web", "6MD Orbat.Web\6MD Orbat.Web.csproj", "{78F29042-86F9-4776-924D-0B3ED9A388F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.Web", "6MD Orbat.Web\_6MD.Web.csproj", "{78F29042-86F9-4776-924D-0B3ED9A388F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6MD Orbat.Tests", "6MD Orbat.Tests\6MD Orbat.Tests.csproj", "{0FFC7BB1-76D3-4A28-A4D0-10A297DB843B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.Tests", "6MD Orbat.Tests\_6MD.Tests.csproj", "{0FFC7BB1-76D3-4A28-A4D0-10A297DB843B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CC6D8615-D468-482B-8DDF-A868FCC20889}"
 	ProjectSection(SolutionItems) = preProject

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Sdk Name="Aspire.AppHost.Sdk" Version="9.0.0" />
 
@@ -12,8 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\6MD Orbat.ApiService\6MD Orbat.ApiService.csproj" />
-    <ProjectReference Include="..\6MD Orbat.Web\6MD Orbat.Web.csproj" />
+    <ProjectReference Include="..\6MD Orbat.ApiService\_6MD.ApiService.csproj" />
+    <ProjectReference Include="..\6MD Orbat.Web\_6MD.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>
