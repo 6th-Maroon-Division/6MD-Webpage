@@ -1,5 +1,5 @@
-using _6MD_Orbat.Web;
-using _6MD_Orbat.Web.Components;
+using _6MD.Web;
+using _6MD.Web.Components;
 using Microsoft.AspNetCore.Components;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _6MD_Orbat.ApiService.Controllers
+namespace _6MD.ApiService.Controllers
 {
     [ApiController]
     [Route("api/users")]

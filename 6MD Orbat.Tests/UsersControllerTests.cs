@@ -1,4 +1,4 @@
-﻿using _6MD_Orbat.ApiService.Controllers;
+﻿using _6MD.ApiService.Controllers;
 using DataStructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +10,7 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using Xunit;
 using Moq.EntityFrameworkCore;
-namespace _6MD_Orbat.ApiService.Tests.Controllers
+namespace _6MD.ApiService.Tests.Controllers
 {
     public class UsersControllerTests
     {
