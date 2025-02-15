@@ -7,7 +7,7 @@ builder.AddServiceDefaults();
 builder.Services.AddProblemDetails();
 builder.Services.AddControllers();
 
-builder.AddNpgsqlDbContext<DataStructure.DB>("6MDDatabase");
+builder.AddNpgsqlDbContext<DataStructure.DB>("MainDB");
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();

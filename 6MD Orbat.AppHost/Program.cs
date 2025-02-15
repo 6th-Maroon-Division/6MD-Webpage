@@ -4,7 +4,7 @@ var builder = DistributedApplication.CreateBuilder(args);
 var postgres = builder.AddPostgres("postgres")
     .WithPgAdmin();
 
-var DB = postgres.AddDatabase("6MDDatabase");
+var DB = postgres.AddDatabase("MainDB");
 
 var cache = builder.AddRedis("cache");
 
