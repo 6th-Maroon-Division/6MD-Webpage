@@ -36,7 +36,7 @@
     <property name="UserPremissions" type="Int64" p1:ValidateRequired="true" p1:Guid="487ebf08-dc74-4155-bb87-fd322c8fbf16">
       <column name="" />
     </property>
-    <property name="RankID" type="Int32" p1:ValidateRequired="true" p1:Guid="a087e83f-6f3e-47ac-81e6-43d38675b9a1">
+    <property name="RankID" type="Int32" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="a087e83f-6f3e-47ac-81e6-43d38675b9a1">
       <column name="" not-null="False" />
     </property>
   </class>
@@ -229,27 +229,19 @@
   </class>
   <associations>
     <association name="Rank_User" cardinality="OneToMany" p1:Guid="22e339fa-32bf-4768-a2d9-ffcd0437532f">
-      <end1 multiplicity="One" name="Rank" class="User" relation-class="Rank" constrained="True" lazy="False" p1:Guid="b10b7b23-9eae-4a7c-927c-875d3437b7ff">
+      <end1 multiplicity="ZeroOrOne" name="Rank" class="User" relation-class="Rank" constrained="True" lazy="False" p1:Guid="b10b7b23-9eae-4a7c-927c-875d3437b7ff">
         <property name="ID" />
       </end1>
       <end2 multiplicity="Many" name="Users" class="Rank" relation-class="User" lazy="False" p1:Guid="1d73bf8f-611f-4caf-9985-65ba36019d6c">
         <property name="RankID" />
       </end2>
     </association>
-    <association name="User_LOA" cardinality="OneToMany" p1:Guid="dbf70616-a7f3-487e-a8be-37eb5ed576df">
+    <association name="User_LOA" cardinality="OneToMany" on-delete="SetNull" p1:Guid="dbf70616-a7f3-487e-a8be-37eb5ed576df">
       <end1 multiplicity="One" name="User" class="LOA" relation-class="User" constrained="True" lazy="False" p1:Guid="adefa1bf-2c38-4992-bd51-ba4e23789122">
         <property name="ID" />
       </end1>
       <end2 multiplicity="Many" name="LOAs" class="User" relation-class="LOA" lazy="False" p1:Guid="7ef09711-3adb-423d-9ea9-42337c7e3cd2">
         <property name="UserID" />
-      </end2>
-    </association>
-    <association name="Operation_User" cardinality="OneToOne" p1:Guid="3feeb85e-1310-4f95-a04d-46d662fc77e0">
-      <end1 multiplicity="One" name="Operation" class="User" relation-class="Operation" constrained="False" lazy="False" p1:Guid="7142c1cf-8f71-4fb9-85b8-6640f94967d3">
-        <property name="ID" />
-      </end1>
-      <end2 multiplicity="One" name="User" class="Operation" relation-class="User" constrained="False" lazy="False" p1:Guid="38572ee3-c0f4-4e2a-92f6-90998c7fe5f4">
-        <property name="ID" />
       </end2>
     </association>
     <association name="Operation_Section" cardinality="OneToMany" on-delete="Cascade" p1:Guid="464779c3-9157-43aa-a4a3-02851ea407d1">
@@ -370,6 +362,14 @@
       </end1>
       <end2 multiplicity="Many" name="AttendanceTaken" class="User" relation-class="Attendance" lazy="False" p1:Guid="30318165-73bd-44f7-bfa2-88ff60b89f69">
         <property name="AttendanceTakenByID" />
+      </end2>
+    </association>
+    <association name="User_Operation" cardinality="ManyToMany" p1:Guid="c1618726-6ad9-4d12-a7ac-ead876ca88c0">
+      <end1 multiplicity="Many" name="Users" class="Operation" relation-class="User" lazy="False" p1:Guid="b67c708b-84f0-4280-9283-dc33420ac676">
+        <property name="ID" column="UserID" />
+      </end1>
+      <end2 multiplicity="Many" name="Operations" class="User" relation-class="Operation" lazy="False" p1:Guid="bcadb4c6-a6bb-405c-adc6-b33ad567a785">
+        <property name="ID" column="OPID" />
       </end2>
     </association>
   </associations>

@@ -19,6 +19,7 @@
         <File Name="DB.Deduction.cs" />
         <File Name="DB.Status.cs" />
         <File Name="DB.AttendanceStatus.cs" />
+        <File Name="DB.OpType.cs" />
       </GeneratedFiles>
     </Generation>
     <DatabaseFirstNamingRules>

@@ -48,8 +48,8 @@ namespace _6MD.ApiService.Tests.Controllers
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
-            var returnUsers = Assert.IsType<List<User>>(okResult.Value);
-            Assert.Single(returnUsers);
+            var returngroups = Assert.IsType<List<Groups>>(okResult.Value);
+            Assert.Single(returngroups);
         }
 
         [Fact]
@@ -77,8 +77,8 @@ namespace _6MD.ApiService.Tests.Controllers
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
-            var returnUser = Assert.IsType<User>(okResult.Value);
-            Assert.Equal(users[0].ID, returnUser.ID);
+            var returnGroup = Assert.IsType<Groups>(okResult.Value);
+            Assert.Equal(groups[0].ID, returnGroup.ID);
         }
 
         [Fact]
@@ -113,18 +113,18 @@ namespace _6MD.ApiService.Tests.Controllers
         public async Task CreateGroup_ReturnsCreatedAtActionResult_WithGroup()
         {
             // Arrange
-            var user = new Groups { ID = 1, Name = "Test Group" };
+            var group = new Groups { ID = 1, Name = "Test Group" };
             var mockDbSet = CreateMockDbSet(new List<Groups>());
             _mockContext.Setup(c => c.Groups).ReturnsDbSet(mockDbSet.Object);
 
             // Act
-            var result = await _controller.CreateGroup(user);
+            var result = await _controller.CreateGroup(group);
 
             // Assert
             var createdAtActionResult = Assert.IsType<CreatedAtActionResult>(result);
             var returnGroup = Assert.IsType<Groups>(createdAtActionResult.Value);
 
-            Assert.Equal(user.ID, returnGroup.ID);
+            Assert.Equal(group.ID, returnGroup.ID);
         }
 
         [Fact]
@@ -156,6 +156,91 @@ namespace _6MD.ApiService.Tests.Controllers
             Assert.IsType<NotFoundObjectResult>(result);
         }
 
+        [Fact]
+        public async Task AddUserToGroup_ReturnsNotFound_WhenGroupDoesNotExist()
+        {
+            // Arrange
+            var mockDbSet = CreateMockDbSet(new List<Groups>());
+            _mockContext.Setup(c => c.Groups).ReturnsDbSet(mockDbSet.Object);
+            // Act
+            var result = await _controller.AddUserToGroup(1, 1);
+            // Assert
+            Assert.IsType<NotFoundObjectResult>(result);
+        }
+
+        [Fact]
+        public async Task AddUserToGroup_ReturnsNotFound_WhenUserDoesNotExist()
+        {
+            // Arrange
+            var group = new Groups { ID = 1, Name = "Test Group" };
+            var mockDbSet = CreateMockDbSet(new List<Groups> { group });
+            var mockDbSetUsers = CreateMockDbSet(new List<User>());
+            _mockContext.Setup(c => c.Groups).ReturnsDbSet(mockDbSet.Object);
+            _mockContext.Setup(c => c.Users).ReturnsDbSet(mockDbSetUsers.Object);
+            // Act
+            var result = await _controller.AddUserToGroup(1, 1);
+            // Assert
+            Assert.IsType<NotFoundObjectResult>(result);
+        }
+
+        [Fact]
+        public async Task AddUserToGroup_ReturnsNoContent_WhenUserIsAddedToGroup()
+        {
+            // Arrange
+            var group = new Groups { ID = 1, Name = "Test Group" };
+            var user = new User { ID = 1, Name = "Test User", RankID = 1, UserPremissions = 0 };
+            var mockDbSet = CreateMockDbSet(new List<Groups> { group });
+            var mockDbSetUsers = CreateMockDbSet(new List<User> { user });
+            _mockContext.Setup(c => c.Groups).ReturnsDbSet(mockDbSet.Object);
+            _mockContext.Setup(c => c.Users).ReturnsDbSet(mockDbSetUsers.Object);
+            // Act
+            var result = await _controller.AddUserToGroup(1, 1);
+            // Assert
+            Assert.IsType<NoContentResult>(result);
+        }
+
+        [Fact]
+        public async Task RemoveUserFromGroup_ReturnsNotFound_WhenGroupDoesNotExist()
+        {
+            // Arrange
+            var mockDbSet = CreateMockDbSet(new List<Groups>());
+            _mockContext.Setup(c => c.Groups).ReturnsDbSet(mockDbSet.Object);
+            // Act
+            var result = await _controller.RemoveUserFromGroup(1, 1);
+            // Assert
+            Assert.IsType<NotFoundObjectResult>(result);
+        }
+
+        [Fact]
+        public async Task RemoveUserFromGroup_ReturnsNotFound_WhenUserDoesNotExist()
+        {
+            // Arrange
+            var group = new Groups { ID = 1, Name = "Test Group" };
+            var mockDbSet = CreateMockDbSet(new List<Groups> { group });
+            var mockDbSetUsers = CreateMockDbSet(new List<User>());
+            _mockContext.Setup(c => c.Groups).ReturnsDbSet(mockDbSet.Object);
+            _mockContext.Setup(c => c.Users).ReturnsDbSet(mockDbSetUsers.Object);
+            // Act
+            var result = await _controller.RemoveUserFromGroup(1, 1);
+            // Assert
+            Assert.IsType<NotFoundObjectResult>(result);
+        }
+
+        [Fact]
+        public async Task RemoveUserFromGroup_ReturnsNoContent_WhenUserIsRemovedFromGroup()
+        {
+            // Arrange
+            var group = new Groups { ID = 1, Name = "Test Group" };
+            var user = new User { ID = 1, Name = "Test User", RankID = 1, UserPremissions = 0 };
+            var mockDbSet = CreateMockDbSet(new List<Groups> { group });
+            var mockDbSetUsers = CreateMockDbSet(new List<User> { user });
+            _mockContext.Setup(c => c.Groups).ReturnsDbSet(mockDbSet.Object);
+            _mockContext.Setup(c => c.Users).ReturnsDbSet(mockDbSetUsers.Object);
+            // Act
+            var result = await _controller.RemoveUserFromGroup(1, 1);
+            // Assert
+            Assert.IsType<NoContentResult>(result);
+        }
 
         private Mock<DbSet<T>> CreateMockDbSet<T>(List<T> elements) where T : class
         {
