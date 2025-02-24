@@ -1,4 +1,4 @@
-namespace _6MD_Orbat.Tests;
+namespace _6MD.Tests;
 
 public class WebTests
 {
@@ -6,7 +6,7 @@ public class WebTests
     public async Task GetWebResourceRootReturnsOkStatusCode()
     {
         // Arrange
-        var appHost = await DistributedApplicationTestingBuilder.CreateAsync<Projects._6MD_Orbat_AppHost>();
+        var appHost = await DistributedApplicationTestingBuilder.CreateAsync<Projects._6MD_AppHost>();
         appHost.Services.ConfigureHttpClientDefaults(clientBuilder =>
         {
             clientBuilder.AddStandardResilienceHandler();
