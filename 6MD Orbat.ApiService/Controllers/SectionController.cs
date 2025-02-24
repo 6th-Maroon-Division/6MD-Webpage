@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 namespace _6MD.ApiService.Controllers
 {
     [Route("api/[controller]")]
-    public class SectionConrtoller: ControllerBase
+    public class SectionController: ControllerBase
     {
         private readonly DB _context;
 
-        public SectionConrtoller(DB context)
+        public SectionController(DB context)
         {
             _context = context;
         }

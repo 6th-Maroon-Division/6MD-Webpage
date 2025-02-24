@@ -33,6 +33,19 @@ namespace _6MD.ApiService.Controllers
             return loa;
         }
 
+        [HttpGet("User/{id}")]
+        public async Task<ActionResult<IEnumerable<LOA>>> GetUserLOAs(int id)
+        {
+            var loas = await _context.LOAs
+                .Where(l => l.UserID == id)
+                .ToListAsync();
+            if (loas == null)
+            {
+                return NotFound(new { message = "LOAs not found" });
+            }
+            return loas;
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateLOA(int id, LOA loa)
         {
