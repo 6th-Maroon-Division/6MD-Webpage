@@ -2,15 +2,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.AppHost", "6MD Orbat.AppHost\_6MD.AppHost.csproj", "{B329944D-A2E8-4A6C-B569-382E9420AA0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.AppHost", "_6MD.AppHost\_6MD.AppHost.csproj", "{B329944D-A2E8-4A6C-B569-382E9420AA0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.ServiceDefaults", "6MD Orbat.ServiceDefaults\_6MD.ServiceDefaults.csproj", "{40CEDF4B-0701-4D4A-A85A-EA5F1DC97D24}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.ServiceDefaults", "_6MD.ServiceDefaults\_6MD.ServiceDefaults.csproj", "{40CEDF4B-0701-4D4A-A85A-EA5F1DC97D24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.ApiService", "6MD Orbat.ApiService\_6MD.ApiService.csproj", "{CE21B8AA-7661-420C-887D-1E062A50D474}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.ApiService", "_6MD.ApiService\_6MD.ApiService.csproj", "{CE21B8AA-7661-420C-887D-1E062A50D474}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.Web", "6MD Orbat.Web\_6MD.Web.csproj", "{78F29042-86F9-4776-924D-0B3ED9A388F9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.Tests", "6MD Orbat.Tests\_6MD.Tests.csproj", "{0FFC7BB1-76D3-4A28-A4D0-10A297DB843B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.Tests", "_6MD.Tests\_6MD.Tests.csproj", "{0FFC7BB1-76D3-4A28-A4D0-10A297DB843B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CC6D8615-D468-482B-8DDF-A868FCC20889}"
 	ProjectSection(SolutionItems) = preProject
@@ -18,6 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructure", "DataStructure\DataStructure.csproj", "{37C1F8B4-79AC-4946-8D3A-BA868285C30E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.Webold", "6MD Orbat.Web\_6MD.Webold.csproj", "{8E909994-6629-8269-E990-F2B2B51DA228}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.Web", "_6MD.Web\_6MD.Web.csproj", "{E701638D-F097-6062-41F2-0EBDD3B62AEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +39,6 @@ Global
 		{CE21B8AA-7661-420C-887D-1E062A50D474}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE21B8AA-7661-420C-887D-1E062A50D474}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE21B8AA-7661-420C-887D-1E062A50D474}.Release|Any CPU.Build.0 = Release|Any CPU
-		{78F29042-86F9-4776-924D-0B3ED9A388F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78F29042-86F9-4776-924D-0B3ED9A388F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78F29042-86F9-4776-924D-0B3ED9A388F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{78F29042-86F9-4776-924D-0B3ED9A388F9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0FFC7BB1-76D3-4A28-A4D0-10A297DB843B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0FFC7BB1-76D3-4A28-A4D0-10A297DB843B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FFC7BB1-76D3-4A28-A4D0-10A297DB843B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,6 +47,14 @@ Global
 		{37C1F8B4-79AC-4946-8D3A-BA868285C30E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37C1F8B4-79AC-4946-8D3A-BA868285C30E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37C1F8B4-79AC-4946-8D3A-BA868285C30E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E909994-6629-8269-E990-F2B2B51DA228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E909994-6629-8269-E990-F2B2B51DA228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E909994-6629-8269-E990-F2B2B51DA228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E909994-6629-8269-E990-F2B2B51DA228}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E701638D-F097-6062-41F2-0EBDD3B62AEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E701638D-F097-6062-41F2-0EBDD3B62AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E701638D-F097-6062-41F2-0EBDD3B62AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E701638D-F097-6062-41F2-0EBDD3B62AEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,5 @@
-using _6MD.Web;
-using _6MD.Web.Components;
+using _6MD.Webold;
+using _6MD.Webold.Components;
 using Microsoft.AspNetCore.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add service defaults & Aspire client integrations.
 builder.AddServiceDefaults();
 builder.AddRedisOutputCache("cache");
+
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
@@ -24,9 +25,13 @@ else
     app.UseDeveloperExceptionPage();
 app.UseHttpsRedirection();
 
+app.UseAuthorization();
+app.UseAuthentication();
+
 app.UseAntiforgery();
 
-//app.UseOutputCache();
+
+app.UseOutputCache();
 
 app.MapStaticAssets();
 
