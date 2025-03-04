@@ -39,6 +39,12 @@
     <property name="RankID" type="Int32" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="a087e83f-6f3e-47ac-81e6-43d38675b9a1">
       <column name="" not-null="False" />
     </property>
+    <property name="Email" type="String" p1:ValidateRequired="true" p1:Guid="479719bb-425c-426a-9e23-25d8cde516fc">
+      <column name="" />
+    </property>
+    <property name="Password" type="String" p1:ValidateRequired="true" p1:Guid="1a1d3b04-26b9-4c0c-9bff-dc24855e5bde">
+      <column name="" />
+    </property>
   </class>
   <class name="Rank" entity-set="Ranks" p1:Guid="b7c275a2-0aea-4fa6-a81a-cefa807ab85f">
     <id name="ID" type="Int32" p1:ValidateRequired="true" p1:Guid="1dfb9db5-67cc-4465-bcf5-48e0ae56385f">

@@ -18,6 +18,12 @@
     </None>
     <None Update="DB.efml">
       <Generator>DevartEFCoreGenerator</Generator>
+      <LastGenOutput>DB.info</LastGenOutput>
+    </None>
+    <None Update="DB.info">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DB.efml</DependentUpon>
     </None>
   </ItemGroup>
 
