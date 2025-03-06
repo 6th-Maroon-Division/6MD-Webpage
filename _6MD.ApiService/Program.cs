@@ -44,8 +44,8 @@ if (app.Environment.IsDevelopment())
 {
     using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<DataStructure.DB>();
-    if (db.Database.GetPendingMigrations().Any())
-        await db.Database.MigrateAsync();
+    //if (db.Database.GetPendingMigrations().Any())
+    //    await db.Database.MigrateAsync();
 }
 
 app.UseAuthentication();

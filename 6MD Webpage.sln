@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.Webold", "6MD Orbat.We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.Web", "_6MD.Web\_6MD.Web.csproj", "{E701638D-F097-6062-41F2-0EBDD3B62AEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6MD.AuthServer", "_6MD.AuthServer\_6MD.AuthServer.csproj", "{047471DB-F96E-6E65-CC1C-6586562B0A36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,8 +57,15 @@ Global
 		{E701638D-F097-6062-41F2-0EBDD3B62AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E701638D-F097-6062-41F2-0EBDD3B62AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E701638D-F097-6062-41F2-0EBDD3B62AEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{047471DB-F96E-6E65-CC1C-6586562B0A36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{047471DB-F96E-6E65-CC1C-6586562B0A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{047471DB-F96E-6E65-CC1C-6586562B0A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{047471DB-F96E-6E65-CC1C-6586562B0A36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A12C9848-8C69-4DCF-B933-0C78E20E9171}
 	EndGlobalSection
 EndGlobal

@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\_6MD.ApiService\_6MD.ApiService.csproj" />
     <ProjectReference Include="..\6MD Orbat.Web\_6MD.Webold.csproj" />
+    <ProjectReference Include="..\_6MD.AuthServer\_6MD.AuthServer.csproj" />
     <ProjectReference Include="..\_6MD.Web\_6MD.Web.csproj" />
   </ItemGroup>
 

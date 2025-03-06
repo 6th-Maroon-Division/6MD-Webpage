@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<efcore context-namespace="_6MD.AuthServer.DB" namespace="_6MD.AuthServer.DB" p1:name="UserDB" p1:Guid="60003302-e61b-4f17-ab84-0693108d9433" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0">
+  <class name="User" entity-set="Users" p1:Guid="90b34854-b059-4f6c-b355-93d639ffbf46">
+    <id name="Guid" type="Guid" p1:ValidateRequired="true" p1:Guid="f05c97a9-90f8-47c0-a34d-bd5b4d56894d">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="c12c6680-bc02-4c42-8be2-f9c9b69bb051">
+      <column name="" />
+    </property>
+    <property name="Email" type="String" p1:nullable="True" p1:ValidateFormat="Email" p1:ValidateRequired="false" p1:Guid="094080e5-fdd3-4393-affe-840d5bede9ca">
+      <column name="" />
+    </property>
+    <property name="Password" type="String" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="5d9fc572-fb35-4460-907f-01a69e6a69f1">
+      <column name="" />
+    </property>
+    <property name="RanksGuid" type="Guid" p1:nullable="True" shadow="True" p1:ValidateRequired="false" p1:Guid="afbc6720-e266-4621-8ba2-54f658db7cd7">
+      <column name="" not-null="False" />
+    </property>
+    <property name="Retired" type="Boolean" p1:ValidateRequired="true" p1:Guid="8c71d594-1187-41b1-b994-098fbb89fe7e">
+      <column name="" />
+    </property>
+  </class>
+  <class name="Groups" entity-set="Groups" p1:Guid="ab0bb9e4-87bf-4513-a647-469b0e17eb96">
+    <id name="Guid" type="Guid" p1:ValidateRequired="true" p1:Guid="ac98fbef-5ff7-478a-9f3a-5e12046f1918">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="56597b70-d52a-4d47-8c8e-48b453533ad6">
+      <column name="" />
+    </property>
+    <property name="Color" type="String" p1:ValidateRequired="true" p1:Guid="713dbc9a-e756-4ef8-b195-c049bb313aed">
+      <column name="" />
+    </property>
+  </class>
+  <class name="UserPremission" entity-set="UserPremissions" p1:Guid="b04a9005-d329-49f5-bfb9-108d21a697ef">
+    <id name="Guid" type="Guid" p1:ValidateRequired="true" p1:Guid="ddf7bc1e-eae6-4ec2-9f3e-8652c6433fde">
+      <column name="" />
+    </id>
+    <property name="Key" type="String" p1:ValidateRequired="true" p1:Guid="f8413063-2e7a-4108-a864-f419de21fe3b">
+      <column name="" />
+    </property>
+    <property name="Power" type="Int32" p1:ValidateRequired="true" p1:Guid="3886ebdc-d229-44c8-9958-519d0f4b8f55">
+      <column name="" />
+    </property>
+    <property name="UserGuid" type="Guid" shadow="True" p1:ValidateRequired="true" p1:Guid="f9553763-963d-4c7c-96b1-630c1e4fcbbd">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="OAuthAccount" entity-set="OAuthAccounts" p1:Guid="1fd53777-dc56-4988-ab33-9f8204b05039">
+    <id name="Guid" type="Guid" p1:ValidateRequired="true" p1:Guid="d6c9b8ad-80f7-4827-b735-52ee0de50be1">
+      <column name="" />
+    </id>
+    <property name="Provider" type="String" p1:ValidateRequired="true" p1:Guid="77d90972-98ab-4960-97ed-319cb394cb82">
+      <column name="" />
+    </property>
+    <property name="provider_id" type="String" p1:ValidateRequired="true" p1:Guid="e81f7272-8733-40e8-8a50-406c3a4869ed">
+      <column name="" />
+    </property>
+    <property name="access_token" type="String" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="a216297f-c88c-48ab-99b1-c44726d3bfd5">
+      <column name="" />
+    </property>
+    <property name="refresh_token" type="String" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="39f85eab-f6f4-41b1-8e32-a1176669fe22">
+      <column name="" />
+    </property>
+    <property name="expires_at" type="DateTime" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="2206e401-081f-4cc3-9e65-e67d7fb107e9">
+      <column name="" />
+    </property>
+    <property name="CreatedAt" type="DateTime" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="73a48cd0-bec0-47eb-a624-d8889188f3c7">
+      <column name="" />
+    </property>
+    <property name="UpdatedAt" type="DateTime" value-generated="OnAddOrUpdate" p1:ValidateRequired="true" p1:Guid="2f4541c8-a115-482e-8cbb-d18caefa9f19">
+      <column name="" />
+    </property>
+    <property name="UserGuid" type="Guid" shadow="True" p1:ValidateRequired="true" p1:Guid="b20bd695-75fc-4634-a93e-f9834ed758b4">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="Ranks" entity-set="Ranks" p1:Guid="62fdf6db-0eef-4000-adc3-8d1e171ccd6c">
+    <id name="Guid" type="Guid" p1:ValidateRequired="true" p1:Guid="08554f15-7b44-4f34-b6a1-1cc277f8b7c1">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="2645dabf-01ed-4e09-b787-308e7e19ec92">
+      <column name="" />
+    </property>
+    <property name="ImagePath" type="String" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="99c81469-b0dc-42bc-92ec-78980a176de8">
+      <column name="" />
+    </property>
+    <property name="Color" type="Int32" p1:ValidateRequired="true" p1:Guid="4b3cd102-42bc-41d6-9b17-2e09bda3d51b">
+      <column name="" />
+    </property>
+    <property name="Prefix" type="String" p1:ValidateRequired="true" p1:Guid="081b1180-e972-4a61-b8cf-478f4313ef1f">
+      <column name="" />
+    </property>
+  </class>
+  <class name="GroupPremission" entity-set="GroupPremissions" p1:Guid="832eb685-ad26-41a9-9484-5a6e12287309">
+    <id name="Guid" type="Guid" p1:ValidateRequired="true" p1:Guid="ed66f1ed-65da-4255-9e9d-1e81500aecd8">
+      <column name="" />
+    </id>
+    <property name="Key" type="String" p1:ValidateRequired="true" p1:Guid="39058f0b-cfaf-49f5-92ac-10ecf3ebf4cd">
+      <column name="" />
+    </property>
+    <property name="Power" type="Int32" p1:ValidateRequired="true" p1:Guid="e250a1b1-0e7c-4f9d-b9f0-04809b98e05d">
+      <column name="" />
+    </property>
+    <property name="GroupGuid" type="Guid" shadow="True" p1:ValidateRequired="true" p1:Guid="9916085b-948a-4d65-9dd0-f6f25511a1ef">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <associations>
+    <association name="User_Premissions" cardinality="OneToMany" on-delete="Cascade" p1:Guid="f2f31126-a848-46e4-88f9-b63f3ffba428">
+      <end1 multiplicity="One" name="User" class="UserPremission" relation-class="User" constrained="True" lazy="False" p1:Guid="3f186440-1a55-4ed0-a12a-907183162b17">
+        <property name="Guid" />
+      </end1>
+      <end2 multiplicity="Many" name="Premissions" class="User" relation-class="UserPremission" lazy="False" p1:Guid="d0144baa-5a8a-4422-bf94-0727afdc7ca8">
+        <property name="UserGuid" />
+      </end2>
+    </association>
+    <association name="User_OAuthAccount" cardinality="OneToMany" on-delete="Cascade" p1:Guid="04b39ce4-9b4e-480b-900a-50c63b95fc2c">
+      <end1 multiplicity="One" name="User" class="OAuthAccount" relation-class="User" constrained="True" lazy="False" p1:Guid="b855b028-10a7-4182-aa41-6a35dd382d4a">
+        <property name="Guid" />
+      </end1>
+      <end2 multiplicity="Many" name="OAuthAccounts" class="User" relation-class="OAuthAccount" lazy="False" p1:Guid="eb574cc4-3d76-465f-a046-e14932bcba57">
+        <property name="UserGuid" />
+      </end2>
+    </association>
+    <association name="Groups_User" cardinality="ManyToMany" p1:Guid="011885f3-a1c2-479a-964f-de909ef57636">
+      <end1 multiplicity="Many" name="Groups" class="User" relation-class="Groups" lazy="False" p1:Guid="cd7ed0d9-5103-4748-b00a-16a163be97ea">
+        <property name="Guid" column="GroupGuid" />
+      </end1>
+      <end2 multiplicity="Many" name="Users" class="Groups" relation-class="User" lazy="False" p1:Guid="cf3f0304-1403-4e7a-8bac-ede5c2a92150">
+        <property name="Guid" column="UserGuid" />
+      </end2>
+    </association>
+    <association name="Ranks_User" cardinality="OneToMany" on-delete="SetNull" p1:Guid="4ea8d7af-f006-471c-b003-3f3424f95085">
+      <end1 multiplicity="ZeroOrOne" name="Ranks" class="User" relation-class="Ranks" constrained="True" lazy="False" p1:Guid="e33cc0ad-8626-47c1-96f9-4834e519b036">
+        <property name="Guid" />
+      </end1>
+      <end2 multiplicity="Many" name="Users" class="Ranks" relation-class="User" lazy="False" p1:Guid="62a63008-b5fb-438c-af2e-ea770a15dfd9">
+        <property name="RanksGuid" />
+      </end2>
+    </association>
+    <association name="Groups_GroupPremission" cardinality="OneToMany" on-delete="Cascade" p1:Guid="81656d45-484c-4de9-9a30-bd01b628867c">
+      <end1 multiplicity="One" name="Groups" class="GroupPremission" relation-class="Groups" constrained="True" lazy="False" p1:Guid="94869323-f8d5-43e8-9c5f-2bc4037f8f12">
+        <property name="Guid" />
+      </end1>
+      <end2 multiplicity="Many" name="Premissions" class="Groups" relation-class="GroupPremission" lazy="False" p1:Guid="8efb4106-e723-4314-bf80-56b95a164fe9">
+        <property name="GroupGuid" />
+      </end2>
+    </association>
+  </associations>
+</efcore>
