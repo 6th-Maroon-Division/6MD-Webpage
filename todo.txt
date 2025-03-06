@@ -7,3 +7,5 @@ Services
 -	Implement a Discord Bot
 	-	Promotion
 	-	Authentication for user groups
+
+Build and sso
