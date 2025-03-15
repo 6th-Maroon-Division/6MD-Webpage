@@ -1,8 +1,14 @@
 using Aspire.Npgsql.EntityFrameworkCore.PostgreSQL;
 using Grpc.Core;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using OpenIddict.Validation.AspNetCore;
+using System.Security.Cryptography.X509Certificates;
 
 var builder = WebApplication.CreateBuilder(args);
+
+string authserver = Environment.GetEnvironmentVariable("services__Auth-Server__https__0") ?? throw new Exception("AuthServer not found!");
 
 // Add service defaults & Aspire client integrations.
 builder.AddServiceDefaults();
@@ -22,6 +28,38 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 #endif
 
+builder.Services.AddOpenIddict()
+    .AddValidation(options =>
+    {
+        options.SetIssuer(authserver);
+        //options.SetIssuer("https://Auth-Server");
+        //options.AddAudiences("API");
+        //options.AddEncryptionKey(new SymmetricSecurityKey(
+        //    Convert.FromBase64String("DRjd/GnduI3Efzen9V9BvbNUfc/VKgXltV7Kbk9sMkY=")));
+
+        options.UseIntrospection()
+            .SetClientId("API")
+            .SetClientSecret("388D45FA-B36B-4988-BA59-B187D329C207")
+            .UseSystemNetHttp();
+
+
+        options.UseAspNetCore();
+    });
+
+
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.DefaultPolicy = new AuthorizationPolicyBuilder(OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme)
+        .RequireAuthenticatedUser()
+        .Build();
+});
 
 var app = builder.Build();
 

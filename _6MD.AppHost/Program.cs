@@ -15,15 +15,17 @@ var OperationDB = postgres.AddDatabase("OperationDB");
 
 var cache = builder.AddRedis("cache");
 
-var apiService = builder.AddProject<_6MD_ApiService>("apiservice")
-    .WithReference(DB)
-    .WaitFor(DB)
+var authServer = builder.AddProject<Projects._6MD_AuthServer>("Auth-Server")
+    .WithReference(UserDB)
+    .WaitFor(UserDB)
     .WithEnvironment("DiscordOauthClientID", DiscordOauthClientID)
     .WithEnvironment("DiscordOauthSecret", DiscordOauthSecret);
 
-var authServer = builder.AddProject<Projects._6MD_AuthServer>("Auth Server")
-    .WithReference(UserDB)
-    .WaitFor(UserDB);
+var apiService = builder.AddProject<_6MD_ApiService>("apiservice")
+    .WithReference(DB)
+    .WaitFor(DB)
+    .WithReference(authServer)
+    .WaitFor(authServer);
 
 /*builder.AddProject<Projects._6MD_Webold>("webfrontend")
     .WithExternalHttpEndpoints()
