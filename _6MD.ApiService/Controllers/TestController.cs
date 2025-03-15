@@ -6,7 +6,7 @@ using OpenIddict.Validation.AspNetCore;
 
 namespace _6MD.ApiService.Controllers
 {
-    [Authorize(AuthenticationSchemes = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class TestController : ControllerBase
@@ -14,7 +14,7 @@ namespace _6MD.ApiService.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            if (!User.HasScope("scp:test"))
+            if (!User.HasAudience("API"))
             {
                 return Unauthorized("Not Working");
             }

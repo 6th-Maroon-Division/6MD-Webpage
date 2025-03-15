@@ -3,6 +3,7 @@ using _6MD.AuthServer.services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using OpenIddict.Validation.AspNetCore;
+using static OpenIddict.Server.OpenIddictServerEvents;
 
 namespace _6MD.AuthServer;
 
@@ -42,32 +43,29 @@ public class Program
         .AddServer(options =>
         {
             // Enable the token endpoint.
-            options.SetTokenEndpointUris("auth/Authorization/token");
-            options.SetAuthorizationEndpointUris("auth/Authorizatzion/auth");
-            options.SetConfigurationEndpointUris(Array.Empty<string>());
-            options.SetEndSessionEndpointUris(Array.Empty<string>());
-            options.SetEndUserVerificationEndpointUris(Array.Empty<string>());
-            options.SetIntrospectionEndpointUris("auth/Authorizatzion/Introspection");
-            options.SetRevocationEndpointUris(Array.Empty<string>());
-            options.SetJsonWebKeySetEndpointUris(Array.Empty<string>());
-            options.SetUserInfoEndpointUris(Array.Empty<string>());
+            options.SetTokenEndpointUris("/connect/token");
+            //options.SetAuthorizationEndpointUris("auth/Authorizatzion/auth");
+            options.SetIntrospectionEndpointUris("/connect/introspect");
 
             // Enable the client credentials flow.
             options.AllowClientCredentialsFlow();
-            options.AllowAuthorizationCodeFlow();
-            options.AllowRefreshTokenFlow();
-            options.AllowPasswordFlow();
+            //options.AllowAuthorizationCodeFlow();
+            //options.AllowRefreshTokenFlow();
+            //options.AllowPasswordFlow();
 
-            //options.AddEncryptionKey(new SymmetricSecurityKey(
-            //Convert.FromBase64String("DRjd/GnduI3Efzen9V9BvbNUfc/VKgXltV7Kbk9sMkY=")));
+
+            options.AddEncryptionKey(new SymmetricSecurityKey(
+            Convert.FromBase64String("DRjd/GnduI3Efzen9V9BvbNUfc/VKgXltV7Kbk9sMkY=")));
+
 
             // Register the signing and encryption credentials.
             options.AddDevelopmentEncryptionCertificate()
                    .AddDevelopmentSigningCertificate();
 
             // Register the ASP.NET Core host and configure the ASP.NET Core options.
-            options.UseAspNetCore()
-                   .EnableTokenEndpointPassthrough();
+            options.UseAspNetCore();
+            options.AddEventHandler<HandleTokenRequestContext>(builder =>
+                builder.UseScopedHandler<TokenRequest>());
 
         })
         .AddClient(options =>

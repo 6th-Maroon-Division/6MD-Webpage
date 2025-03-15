@@ -14,7 +14,7 @@ namespace _6MD.ApiService.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            if (!User.HasScope("scp:test"))
+            if (!User.HasAudience("API"))
             {
                 return Unauthorized("Not Working");
             }
