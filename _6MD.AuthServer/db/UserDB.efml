@@ -10,13 +10,16 @@
     <property name="Email" type="String" p1:nullable="True" p1:ValidateFormat="Email" p1:ValidateRequired="false" p1:Guid="094080e5-fdd3-4393-affe-840d5bede9ca">
       <column name="" />
     </property>
-    <property name="Password" type="String" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="5d9fc572-fb35-4460-907f-01a69e6a69f1">
+    <property name="PasswordHash" type="String" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="5d9fc572-fb35-4460-907f-01a69e6a69f1">
       <column name="" />
     </property>
     <property name="RanksGuid" type="Guid" p1:nullable="True" shadow="True" p1:ValidateRequired="false" p1:Guid="afbc6720-e266-4621-8ba2-54f658db7cd7">
       <column name="" not-null="False" />
     </property>
     <property name="Retired" type="Boolean" p1:ValidateRequired="true" p1:Guid="8c71d594-1187-41b1-b994-098fbb89fe7e">
+      <column name="" />
+    </property>
+    <property name="PasswordSalt" type="String" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="b306435c-09c6-46d3-b27b-65a2c5b45ff7">
       <column name="" />
     </property>
   </class>

@@ -30,9 +30,17 @@ namespace _6MD.AuthServer.services
                     Permissions =
                     {
                         Permissions.Endpoints.Token,
-                        Permissions.GrantTypes.ClientCredentials
+                        Permissions.GrantTypes.ClientCredentials,
+                        Permissions.GrantTypes.RefreshToken,
+                        Permissions.GrantTypes.Password,
+                        Permissions.GrantTypes.AuthorizationCode,
+                        Permissions.GrantTypes.DeviceCode,
+                        Permissions.GrantTypes.Implicit
                     }
                 });
+            }
+            else if (await manager.FindByClientIdAsync("API") is null)
+            {
                 await manager.CreateAsync(new OpenIddictApplicationDescriptor
                 {
                     ClientId = "API",

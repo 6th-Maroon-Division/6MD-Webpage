@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using _6MD.AuthServer.DB;
@@ -11,9 +12,11 @@ using _6MD.AuthServer.DB;
 namespace _6MD.AuthServer.Migrations
 {
     [DbContext(typeof(UserDB))]
-    partial class UserDBModelSnapshot : ModelSnapshot
+    [Migration("20250316165619_Added Password hash and Salt fields in db")]
+    partial class AddedPasswordhashandSaltfieldsindb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

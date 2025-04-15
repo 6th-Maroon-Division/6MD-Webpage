@@ -1,8 +1,10 @@
 
 using _6MD.AuthServer.services;
+using _6MD.AuthServer.utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using OpenIddict.Validation.AspNetCore;
+using static OpenIddict.Abstractions.OpenIddictConstants;
 using static OpenIddict.Server.OpenIddictServerEvents;
 
 namespace _6MD.AuthServer;
@@ -50,12 +52,12 @@ public class Program
             // Enable the client credentials flow.
             options.AllowClientCredentialsFlow();
             //options.AllowAuthorizationCodeFlow();
-            //options.AllowRefreshTokenFlow();
-            //options.AllowPasswordFlow();
+            options.AllowRefreshTokenFlow();
+            options.AllowPasswordFlow();
 
 
-            options.AddEncryptionKey(new SymmetricSecurityKey(
-            Convert.FromBase64String("DRjd/GnduI3Efzen9V9BvbNUfc/VKgXltV7Kbk9sMkY=")));
+            //options.AddEncryptionKey(new SymmetricSecurityKey(
+            //Convert.FromBase64String("DRjd/GnduI3Efzen9V9BvbNUfc/VKgXltV7Kbk9sMkY=")));
 
 
             // Register the signing and encryption credentials.
@@ -64,8 +66,11 @@ public class Program
 
             // Register the ASP.NET Core host and configure the ASP.NET Core options.
             options.UseAspNetCore();
+
+            //options.UseReferenceAccessTokens();
+            options.DisableAccessTokenEncryption();
             options.AddEventHandler<HandleTokenRequestContext>(builder =>
-                builder.UseScopedHandler<TokenRequest>());
+                builder.UseScopedHandler<AuthHandlers.Token>());
 
         })
         .AddClient(options =>
@@ -132,6 +137,24 @@ public class Program
             bool pendingModelChanges = db.Database.HasPendingModelChanges();
             if (pendingMigrations && !pendingModelChanges)
                 await db.Database.MigrateAsync();
+            PasswordHash passwordHash = new("123");
+            db.Users.Add(new DB.User()
+            {
+                Guid = Guid.NewGuid(),
+                Name = "test",
+                PasswordHash = passwordHash.GetHashString(),
+                PasswordSalt = passwordHash.GetSaltString(),
+                Premissions = new List<DB.UserPremission>()
+            });
+            db.SaveChanges();
+            db.UserPremissions.Add(new DB.UserPremission()
+            {
+                Guid = Guid.NewGuid(),
+                User = db.Users.First(),
+                Key = "test",
+                Power = 1
+            });
+            db.SaveChanges();
         }
 
         app.UseHttpsRedirection();
